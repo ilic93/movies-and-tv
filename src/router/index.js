@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
 import Movies from '../views/Movies.vue'
 import Shows from '../views/Shows.vue'
@@ -24,7 +25,7 @@ const routes = [
     component: Shows
   },
   {
-    path: '/selected',
+    path: '/selected/:type/:id',
     name: 'selected',
     component: Selected
   }

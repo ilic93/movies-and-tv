@@ -3,20 +3,25 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/movies">Movies</router-link> |
-      <router-link to="/tv-shows">TV shows</router-link> |
-      <router-link to="/selected">Selected</router-link>
+      <router-link to="/tv-shows">TV shows</router-link>
+      <!-- <router-link to="/selected">Selected</router-link> -->
     </div>
-    <router-view/>
+    <b-container>
+      <router-view/>
+    </b-container>
   </div>
 </template>
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-image: linear-gradient(to bottom right, green, white , blue);
+  height: 100vh;
 }
 
 #nav {
