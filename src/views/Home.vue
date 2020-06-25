@@ -19,9 +19,9 @@
         <b-form-select
           id="input-2"
           v-model="form.type"
-          :options="['movies', 'shows']"
+          :options="[{ value: null, text: 'Movie or show?' }, 'movies', 'shows']"
           required
-        ></b-form-select>
+        >Select</b-form-select>
       </b-form-group>
 
       <b-form-group id="input-group-3" label="Stars:" label-for="input-3">
@@ -60,7 +60,7 @@
           <b-form-input id="input-horizontal-4" v-model="form.year" required type="number" min="1900" max="2020"></b-form-input>
         </b-form-group>
         <b-form-group label-cols-lg="4" label="Runtime:" label-for="input-horizontal-5">
-          <b-form-input id="input-horizontal-5" v-model="form.duration" required placeholder="Enter runtime in minutes"></b-form-input>
+          <b-form-input id="input-horizontal-5" v-model="form.runtime" type="number" min="1" required placeholder="Enter runtime in minutes"></b-form-input>
         </b-form-group>
       </b-form-group>
 
@@ -79,7 +79,7 @@ export default {
       showForm: false,
       form: {
         name: '',
-        type: '',
+        type: null,
         stars: '',
         genre: '',
         concluded: false,
@@ -87,7 +87,7 @@ export default {
         seasons: 1,
         year: 1900,
         director: '',
-        duration: ''
+        runtime: null
       }
     }
   },
@@ -97,9 +97,10 @@ export default {
       this.showForm = !this.showForm
     },
     onSubmit () {
-      const { name, type, stars, genre, concluded, episodes, seasons, year, duration, director } = this.form
+      const { name, type, stars, genre, concluded, episodes, seasons, year, runtime, director } = this.form
       const starring = []
       starring.push(stars)
+      const duration = `${runtime} minutes`
 
       if (type === 'shows') {
         this.addTitle({ type, title: { name, starring, genre, concluded, episodes, seasons } })
@@ -109,7 +110,7 @@ export default {
 
       this.form = {
         name: '',
-        type: '',
+        type: null,
         stars: '',
         genre: '',
         concluded: false,
@@ -117,7 +118,7 @@ export default {
         seasons: 1,
         year: 1900,
         director: '',
-        duration: ''
+        runtime: null
       }
     }
   }
