@@ -12,8 +12,14 @@ export default new Vuex.Store({
     shows
   },
   mutations: {
+    appendTitle: (state, { type, title }) => {
+      state[type].push(title)
+    }
   },
   actions: {
+    addTitle: ({ commit }, payload) => {
+      commit('appendTitle', payload)
+    }
   },
   modules: {
   }
